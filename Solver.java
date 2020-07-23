@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.io.File;
@@ -163,9 +164,9 @@ public class Solver {
         if (solvable) {
             System.out.println("Solving state: Solvable\n");
             for(Board board : this.solution) {
-                System.out.println(board.tiles);
+                System.out.println(board.toString());
             }
-            System.out.println("(Minimum) number of moves: " + solNode.moves);
+            System.out.println("Number of moves: " + solNode.moves);
         } else {
             System.out.println("Solving State: Unsolvable.\n");
         }
@@ -177,7 +178,7 @@ public class Solver {
         // read data from text file provided in arguments
         // note that file must be put in project folder
         if (args.length > 0) {
-            File input = new File(System.getProperty("user.dir") + "/tests/" + args[0]);
+            File input = new File(System.getProperty("user.dir") + args[0]);
             Scanner in = new Scanner(input);
             int n = in.nextInt();
             int[][] tiles = new int[n][n];
