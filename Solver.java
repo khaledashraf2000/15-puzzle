@@ -160,26 +160,25 @@ public class Solver {
     }
 
     public void solve() {
-        System.out.println("\nInitial board:\n" + this.initial);
         if (solvable) {
-            System.out.println("Solving state: solvable\n");
+            System.out.println("Solving state: Solvable\n");
             for(Board board : this.solution) {
-                System.out.println(board);
+                System.out.println(board.tiles);
             }
-            System.out.println("Total number of moves: " + solNode.moves);
+            System.out.println("(Minimum) number of moves: " + solNode.moves);
         } else {
-            System.out.println("Solving state: unsolvable\n");
+            System.out.println("Solving State: Unsolvable.\n");
         }
     }
 
     // driver code
     public static void main(String[] args) throws IOException {
+        
         // read data from text file provided in arguments
-        // note that file must be put in tests directory in project folder, tests directory contains
-        // more test files with up to 8x8 puzzles.
+        // note that file must be put in project folder
         if (args.length > 0) {
-            File path = new File(System.getProperty("user.dir") + "/tests/" + args[0]);
-            Scanner in = new Scanner(path);
+            File input = new File(System.getProperty("user.dir") + "/tests/" + args[0]);
+            Scanner in = new Scanner(input);
             int n = in.nextInt();
             int[][] tiles = new int[n][n];
             for (int i = 0; i < n; i++) {
@@ -187,6 +186,7 @@ public class Solver {
                     tiles[i][j] = in.nextInt();
                 }
             }
+
             Board initial = new Board(tiles);
             Solver solver = new Solver(initial);
             solver.solve();

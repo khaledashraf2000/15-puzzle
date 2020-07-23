@@ -41,19 +41,12 @@ public class Board {
 
     // number of tiles out of place
     // for example: 3 2 1 4 5 6 8 7 0
-    //              1 . 1 . . . 1 . 1
-    // hamming distance = 4
+    //              1 . 1 . . . 1 . .
+    // hamming distance = 3
     public int hamming() {
         int h = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                /*
-                // tile (n, n) must always be 0
-                if (i == n - 1 && j == n - 1 && tiles[i][j] != 0) {
-                    h++;
-                    break;
-                }
-                */
                 if (tiles[i][j] == 0) continue;
                 if (tiles[i][j] != (n * i) + j + 1) h++;
             }
